@@ -1,4 +1,7 @@
+import { getLocaleTimeFormat } from '@angular/common';
 import { Component } from '@angular/core';
+import { Task } from '../task';
+import { TaskComponent } from '../task/task.component';
 
 @Component (
   {
@@ -9,14 +12,21 @@ import { Component } from '@angular/core';
 )
 
 export class toDoListComponent {
-  todoList: String[] = ['Coffee', 'Breakfast'];
-  task: String;
+  todoList: Task[] = [];
+  
+  taskName: String;
+  taskDescription: String;
 
   addTask() {
-    this.todoList.push(this.task);
+    let inputTask: Task = {
+      id: this.todoList.length+1,
+      name: this.taskName,
+      description: this.taskDescription
+    }
+    this.todoList.push(inputTask);
   }
 
-  deleteTask(taskIndex: Number) {
-    this.todoList = this.todoList.filter((t, index) => index !== taskIndex);
+  deleteTask(TaskComponent: TaskComponent) {
+    this.todoList = this.todoList.filter(t => t.id !== TaskComponent.taskList.id);
   }
 }

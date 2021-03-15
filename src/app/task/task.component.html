@@ -1,0 +1,9 @@
+<div class="taskList">
+    <div class="name">
+        {{ taskList.id }} : {{ taskList.name }}
+    </div>
+    <div class="right">
+        <img src="/assets/images/bin.png" alt="delete" (click)="delete()">
+    </div>
+    <div>{{ taskList.description }}</div>
+</div>

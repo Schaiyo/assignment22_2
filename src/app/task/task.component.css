@@ -1,0 +1,20 @@
+.taskList {
+    width: 410px;
+    border: 1px solid blueviolet;
+    padding: 0.5em;
+    margin: 0.5em 0 0.5em 0;
+}
+
+.name {
+    font-weight: bold;
+    float: left;
+}
+
+img {
+    width: 15px;
+    height: 18px;
+}
+
+.right {
+    text-align: right;
+}
