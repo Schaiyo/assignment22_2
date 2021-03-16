@@ -1,5 +1,5 @@
 import { getLocaleTimeFormat } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, QueryList, ViewChildren } from '@angular/core';
 import { Task } from '../task';
 import { TaskComponent } from '../task/task.component';
 
@@ -12,10 +12,14 @@ import { TaskComponent } from '../task/task.component';
 )
 
 export class toDoListComponent {
+  @ViewChildren(TaskComponent) taskView: QueryList<TaskComponent>;
+
   todoList: Task[] = [];
   
   taskName: String;
   taskDescription: String;
+
+  viewDetail: Task;
 
   addTask() {
     let inputTask: Task = {
@@ -28,5 +32,19 @@ export class toDoListComponent {
 
   deleteTask(TaskComponent: TaskComponent) {
     this.todoList = this.todoList.filter(t => t.id !== TaskComponent.taskList.id);
+  }
+
+  selectedTask(taskComponent: TaskComponent) {
+    this.clearSelected();
+    taskComponent.isSelected = true;
+    this.viewDetail = taskComponent.taskList;
+  }
+  
+  clearSelected() {
+    this.taskView.forEach(
+      task => {
+        task.isSelected = false;
+      }
+    )    
   }
 }

@@ -1,9 +1,9 @@
-<div class="taskList">
+<div class="taskList" (click)="taskSelected()" [class.selected]="isSelected">
     <div class="name">
         {{ taskList.id }} : {{ taskList.name }}
     </div>
     <div class="right">
         <img src="/assets/images/bin.png" alt="delete" (click)="delete()">
     </div>
-    <div>{{ taskList.description }}</div>
+
 </div>

@@ -1,9 +1,15 @@
 <h2>To Do List</h2>
-<app-task *ngFor="let list of todoList" [taskList]="list" (deleteTask)="deleteTask($event)"></app-task>
+<app-task *ngFor="let list of todoList" [taskList]="list" (deleteTask)="deleteTask($event)" (taskClick)="selectedTask($event)"></app-task>
 
 <div class="addTask">
 <p>Add Task:</p>
   <div>Name: <input type="text" [(ngModel)]="taskName"></div>
   <div>Description <input type="text" [(ngModel)]="taskDescription"></div>
   <button class="button" (click)="addTask()">Add</button>
+</div>
+
+<div class="viewBox" *ngIf="viewDetail">
+  <H4>Task: {{ viewDetail.name }} </H4>
+  <div class="detail">Description:</div>
+  <div>{{ viewDetail.description }}</div>
 </div>
